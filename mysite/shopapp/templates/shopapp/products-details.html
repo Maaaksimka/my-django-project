@@ -1,0 +1,64 @@
+{% extends 'shopapp/base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+  {% trans "Product" %}: №{{ product.pk }}
+{% endblock %}
+
+{% block body %}
+  <h2>{% trans "Product" %}: <strong>{{ product.name }}</strong></h2>
+  <div>
+    {% blocktrans with description=product.description price=product.price discount=product.discount created_by=product.created_by archived=product.archived preview=product.preview %}
+    <div>Description: <em>{{ description }}</em></div>
+    <div>Price: {{ price }}</div>
+    <div>Discount: {{ discount }}</div>
+    <div>Created by: {{ created_by }}</div>
+    <div>Archived: {{ archived }}</div>
+    <div>Preview: {{ preview }}</div>
+
+    {% endblocktrans %}
+
+
+    {% if product.preview %}
+        <img width="200" src="{{ product.preview.url }}" alt="{{ product.preview.name }}">
+    {% endif %}
+
+    <h3>{% trans "Images" %}</h3>
+    <div>
+      {% blocktrans count images_count=product.images.all|length %}
+        There is only one image.
+        {% plural %}
+        There are {{ images_count }} images.
+      {% endblocktrans %}
+    </div>
+    <div>
+      {% for img in product.images.all %}
+        <div>
+          <img width="200" src="{{ img.image.url }}" alt="{{ img.image.name }}">
+          <div>{{ img.description }}</div>
+        </div>
+      {% empty %}
+        <div>{% trans "No images uploaded yet" %}</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% url "shopapp:product_update" pk=object.pk as product_update_url %}
+
+  {% url 'shopapp:product_delete' pk=object.pk as product_delete_url %}
+
+  {% url 'shopapp:products_list' as products_list_url %}
+  {% blocktrans %}
+  <div>
+    <a href="{{ product_update_url }}">Update product</a>
+  </div>
+  <div>
+    <a href="{{ product_delete_url }}">Archive product</a>
+  </div>
+  <div>
+    <a href="{{ products_list_url }}">Back to products list</a>
+  </div>
+  {% endblocktrans %}
+
+{% endblock %}

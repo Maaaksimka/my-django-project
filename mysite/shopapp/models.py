@@ -1,0 +1,67 @@
+from django.contrib.auth.models import User
+from django.db import models
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _, ngettext
+
+
+def product_preview_directory_path(instance: "Products", filename: str) -> str:
+    # ext = filename.split('.')[-1]
+    return "products/product_{pk}/preview/{filename}".format(
+        pk=instance.pk,
+        filename=filename,
+    )
+
+class Products(models.Model):
+    """
+    Модель Product представляет товар,
+    который можно продавать и интернет-магазине.
+
+    Заказы тут: :model:`shopapp.Orders`.
+    """
+    class Meta:
+        ordering = ["name", "price"]
+        verbose_name = _("Product")
+        verbose_name_plural = _("Products")
+
+    name = models.CharField(max_length=100, db_index=True)
+    description = models.TextField(null=False, blank=True, db_index=True)
+    price = models.DecimalField(default=0, max_digits=8, decimal_places=2)
+    discount = models.SmallIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    archived = models.BooleanField(default=False)
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
+    preview = models.FileField(null=True, blank=True, upload_to=product_preview_directory_path)
+
+    def get_absolute_url(self):
+        return reverse('shopapp:product_details', kwargs={'pk': self.pk})
+
+    def __str__(self) -> str:
+        return f"Product(pk={self.pk}, name={self.name!r})"
+
+
+def product_image__directory_path(instance: "ProductImages", filename: str) -> str:
+    return "products/product_{pk}/images/{filename}".format(
+        pk=instance.product.pk,
+        filename=filename,
+    )
+
+class ProductImages(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to=product_image__directory_path)
+    description = models.CharField(max_length=200, null=False, blank=True)
+
+
+class Orders(models.Model):
+    class Meta:
+        verbose_name = _("Order")
+        verbose_name_plural = _("Orders")
+
+    delivery_address = models.TextField(null=True, blank=True)
+    promocode = models.CharField(max_length=20, null=False, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    products = models.ManyToManyField(Products, related_name="orders")
+    receipt = models.FileField(null=True, blank=True, upload_to="orders/receipts/")
+
+    def get_absolute_url(self):
+        return reverse('shopapp:view_orders', kwargs={'pk': self.pk})

@@ -1,0 +1,17 @@
+{% extends 'requestdataapp/base.html' %}
+
+{% block title %}
+  The file size does not match
+{% endblock %}
+
+{% block body %}
+  <h1>File size error</h1>
+    <p>The file size is greater than {{ size }}b</p>
+    <p>Select the file again</p>
+    <p>Select a file that does not exceed {{ size }}b</p>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+    </form>
+{% endblock %}

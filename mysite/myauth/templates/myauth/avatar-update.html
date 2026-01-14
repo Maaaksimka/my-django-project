@@ -1,0 +1,17 @@
+{% block title %}
+   Update avatar
+{% endblock %}
+
+{% block body %}
+  <h2>Update user {{ object.user.username }} avatar</h2>
+  <div>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <div>
+    <a href="{% url 'myauth:users_list' %}">Users list</a>
+  </div>
+{% endblock %}

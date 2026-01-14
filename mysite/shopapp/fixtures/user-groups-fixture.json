@@ -1,0 +1,26 @@
+[
+  {
+    "model": "auth.user_groups",
+    "pk": 1,
+    "fields": {
+      "user": 4,
+      "group": 4
+    }
+  },
+  {
+    "model": "auth.user_groups",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "group": 4
+    }
+  },
+  {
+    "model": "auth.user_groups",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "group": 5
+    }
+  }
+]
