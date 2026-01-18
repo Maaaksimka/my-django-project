@@ -1,20 +1,80 @@
 [project]
-name = "19-django-prod"
+name = "githubpycharmproject"
 version = "0.1.0"
-description = "first-django-prod"
+description = ""
 authors = [
-    {name = "Maksim"}
+    {name = "maksim"}
 ]
-
-
-requires-python = ">=3.12"
+requires-python = "3.12.3"
 dependencies = [
-    "django (>=6.0.1,<7.0.0)",
-    "django-rest-framework (>=0.1.0,<0.2.0)",
-    "django-filter (>=25.2,<26.0)",
-    "django-debug-toolbar (>=6.1.0,<7.0.0)",
-    "pillow (>=12.1.0,<13.0.0)",
-    "gunicorn (>=23.0.0,<24.0.0)"
+    "django (==6.0.1)",
+    "django-rest-framework (==0.1.0)",
+    "django-filter (==25.2)",
+    "djangorestframework (==3.16.1)",
+    "gunicorn (==23.0.0)",
+    "pillow (==12.1.0)",
+    "sqlparse (==0.5.5)",
+    "requests (==2.32.5)",
+    "django-debug-toolbar (==6.1.0)",
+    "anyio (==4.12.1)",
+    "asgiref (==3.11.0)",
+    "attrs (==25.4.0)",
+    "build (==1.4.0)",
+    "cachecontrol (==0.14.4)",
+    "certifi (==2026.1.4)",
+    "cffi (==2.0.0)",
+    "charset-normalizer (==3.4.4)",
+    "cleo (==2.1.0)",
+    "crashtest (==0.4.1)",
+    "cryptography (==46.0.3)",
+    "distlib (==0.4.0)",
+    "django-stubs (==5.2.8)",
+    "django-stubs-ext (==5.2.8)",
+    "drf-spectacular (==0.29.0)",
+    "dulwich (==0.25.2)",
+    "fastjsonschema (==2.21.2)",
+    "filelock (==3.20.3)",
+    "findpython (==0.7.1)",
+    "h11 (==0.16.0)",
+    "httpcore (==1.0.9)",
+    "httpx (==0.28.1)",
+    "idna (==3.11)",
+    "inflection (==0.5.1)",
+    "installer (==0.7.0)",
+    "jaraco-classes (==3.4.0)",
+    "jaraco-context (==6.1.0)",
+    "jaraco-functools (==4.4.0)",
+    "jeepney (==0.9.0)",
+    "jsonschema (==4.26.0)",
+    "jsonschema-specifications (==2025.9.1)",
+    "keyring (==25.7.0)",
+    "more-itertools (==10.8.0)",
+    "msgpack (==1.1.2)",
+    "packaging (==25.0)",
+    "pbs-installer (==2025.12.17)",
+    "pkginfo (==1.12.1.2)",
+    "platformdirs (==4.5.1)",
+    "poetry (==2.3.0)",
+    "poetry-core (==2.3.0)",
+    "pycparser (==2.23)",
+    "pyproject-hooks (==1.2.0)",
+    "pytz (==2025.2)",
+    "pyyaml (==6.0.3)",
+    "rapidfuzz (==3.14.3)",
+    "referencing (==0.37.0)",
+    "requests-toolbelt (==1.0.0)",
+    "rpds-py (==0.30.0)",
+    "secretstorage (==3.5.0)",
+    "shellingham (==1.5.4)",
+    "tomlkit (==0.14.0)",
+    "trove-classifiers (==2026.1.14.14)",
+    "types-pyyaml (==6.0.12.20250915)",
+    "types-requests (==2.32.4.20260107)",
+    "typing-extensions (==4.15.0)",
+    "uritemplate (==4.2.0)",
+    "urllib3 (==2.6.3)",
+    "virtualenv (==20.36.1)",
+    "zstandard (==0.25.0)"
 ]
 
 
