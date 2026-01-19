@@ -2020,5 +2020,5 @@ cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and pyt
 
 [metadata]
 lock-version = "2.1"
-python-versions = "3.12.3"
-content-hash = "f654f8930aec5abb57a86e4f05da6022c5908def652a68807fb5098be9c5362f"
+python-versions = ">=3.12,<4.0"
+content-hash = "2f748b31f0f1a003cc6fea36ab19e31093679842706a70e8bf55ad5c585c6df2"
