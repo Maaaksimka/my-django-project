@@ -45,13 +45,15 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += i18n_patterns(
     path("accounts/", include("myauth.urls")),
     path("shop/", include("shopapp.urls")),
 
 )
+
+
 
 if settings.DEBUG:
     urlpatterns.extend(

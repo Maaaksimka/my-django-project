@@ -78,7 +78,8 @@ dependencies = [
     "uritemplate (==4.2.0)",
     "urllib3 (==2.6.3)",
     "virtualenv (==20.36.1)",
-    "zstandard (==0.25.0)"
+    "zstandard (==0.25.0)",
+    "docutils (>=0.22.4,<0.23.0)"
 ]
 
 [build-system]
