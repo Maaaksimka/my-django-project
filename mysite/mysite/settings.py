@@ -35,7 +35,7 @@ SECRET_KEY = getenv(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv("DJANGO_DEBUG", "0")
+DEBUG = getenv("DJANGO_DEBUG", "0") == "1"
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
@@ -134,8 +134,6 @@ CACHES = {
         # "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
         # "LOCATION": "/var/tmp/django_cache",
         # "LOCATION": "C:/foo/bar",
-        # "TIMEOUT": 10,
-        # "OPTIONS": {}
     },
 }
 
@@ -243,38 +241,4 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "My site with shop app custom auth",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
-}
-
-LOGFILE_NAME = BASE_DIR / "log.txt"
-LOGFILE_SIZE = 1 * 1024 * 1024
-LOGFILE_COUNT = 2
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "verbose": {
-            "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s ",
-        }
-    },
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
-        "logfile": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "filename": LOGFILE_NAME,
-            "maxBytes": LOGFILE_SIZE,
-            "backupCount": LOGFILE_COUNT,
-            "formatter": "verbose",
-        },
-    },
-    "root": {
-        "handlers": [
-            "console",
-            "logfile",
-        ],
-        "level": "INFO"
-    },
 }
